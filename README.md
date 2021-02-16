@@ -39,7 +39,8 @@ In the example above, the image consists of two layers. And the debian:jessie im
 $ docker pull debian:jessie
 ```
 You will find ```jessie: Pulling from library/debian; fdd5d7827f33: Already exists; a3ed95caeb02: Already exists ```in stdout.  
-Use the ```docker images``` to see which images are present locally. In the example above, debian:jessie and debian:latest have the **same image ID** because they are actually the same image tagged with different names.   
+Use the ```docker images``` to see which images are present locally.  
+In the example above, debian:jessie and debian:latest have the **same image ID** because they are actually the same image tagged with different names.   
 
 ### Example: [Push a new image to a registry](https://docs.docker.com/engine/reference/commandline/push/#push-a-new-image-to-a-registry)
 First save the new image by finding the container ID (using docker container ls) and then committing it to a new image name.
