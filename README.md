@@ -13,7 +13,12 @@ Images are just templates for docker containers.
 
 ## Container
 Your basic isolated Docker process. Containers are to Virtual Machines as threads are to processes. Or you can think of them as chroots on steroids.
-List container
+* [`docker create`](https://docs.docker.com/engine/reference/commandline/create) creates a container but does not start it.
+* [`docker run`](https://docs.docker.com/engine/reference/commandline/run) creates and starts a container in one operation.
+* [`docker ps`](https://docs.docker.com/engine/reference/commandline/ps) shows running containers, use `-a` to show all running and stopped containers.
+* [`docker rm`](https://docs.docker.com/engine/reference/commandline/rm) deletes a container.
+* [`docker start`](https://docs.docker.com/engine/reference/commandline/start) starts a container so it is running.
+* [`docker stop`](https://docs.docker.com/engine/reference/commandline/stop) stops a running container.
 
 ## Registry
 A [Docker registry](https://docs.docker.com/get-started/overview/#docker-registries) stores Docker images. Docker Hub is a public registry that anyone can use, and Docker is configured to look for images on Docker Hub by default.   
