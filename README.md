@@ -12,7 +12,7 @@ Images are just templates for docker containers.
 * [`docker tag`](https://docs.docker.com/engine/reference/commandline/tag) tags an image to a name (local or registry).
 
 ## Container
-Your basic isolated Docker process. Containers are to Virtual Machines as threads are to processes. Or you can think of them as chroots on steroids.
+Your basic isolated Docker process.  
 * [`docker create`](https://docs.docker.com/engine/reference/commandline/create) creates a container but does not start it.
 * [`docker run`](https://docs.docker.com/engine/reference/commandline/run) creates and starts a container in one operation.
 * [`docker ps`](https://docs.docker.com/engine/reference/commandline/ps) shows running containers, use `-a` to show all running and stopped containers.
@@ -22,7 +22,6 @@ Your basic isolated Docker process. Containers are to Virtual Machines as thread
 
 ## Registry
 A [Docker registry](https://docs.docker.com/get-started/overview/#docker-registries) stores Docker images. Docker Hub is a public registry that anyone can use, and Docker is configured to look for images on Docker Hub by default.   
-When you use the docker pull or docker run commands, the required images are pulled from your configured registry. When you use the docker push command, your image is pushed to your configured registry.
 
 * [`docker login`](https://docs.docker.com/engine/reference/commandline/login) to login to a registry, use `--username` or `-u` to specify username.
 * [`docker logout`](https://docs.docker.com/engine/reference/commandline/logout) to logout from a registry.
@@ -32,20 +31,15 @@ When you use the docker pull or docker run commands, the required images are pul
 ### Example: [Pull an image from Docker Hub](https://docs.docker.com/engine/reference/commandline/pull/#pull-an-image-from-docker-hub)
 This command pulls the debian:latest image:
 ```
-docker pull debian
+$ docker pull debian
 ```  
-Docker images can consist of multiple layers. In the example above, the image consists of two layers.  
-Layers can be reused by images. For example, the debian:jessie image shares both layers with debian:latest. Pulling the debian:jessie image therefore only pulls its metadata, but not its layers:  
+Docker images can consist of multiple layers and layers can be reused by images.  
+In the example above, the image consists of two layers. And the debian:jessie image shares both layers with debian:latest. Pulling the debian:jessie image therefore only pulls its metadata, but not its layers:  
 ```
 $ docker pull debian:jessie
-
-jessie: Pulling from library/debian
-fdd5d7827f33: Already exists
-a3ed95caeb02: Already exists
-Digest: ...
-Status: Downloaded newer image for debian:jessie
 ```
-To see which images are present locally, use the ```docker images``` command. In the example above, debian:jessie and debian:latest have the **same image ID** because they are actually the same image tagged with different names.   
+You will find ```jessie: Pulling from library/debian; fdd5d7827f33: Already exists; a3ed95caeb02: Already exists ```in stdout.  
+Use the ```docker images``` to see which images are present locally. In the example above, debian:jessie and debian:latest have the **same image ID** because they are actually the same image tagged with different names.   
 
 ### Example: [Push a new image to a registry](https://docs.docker.com/engine/reference/commandline/push/#push-a-new-image-to-a-registry)
 First save the new image by finding the container ID (using docker container ls) and then committing it to a new image name.
