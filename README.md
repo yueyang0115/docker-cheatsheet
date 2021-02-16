@@ -32,10 +32,10 @@ When you use the docker pull or docker run commands, the required images are pul
 ### Example: [Pull an image from Docker Hub](https://docs.docker.com/engine/reference/commandline/pull/#pull-an-image-from-docker-hub)
 This command pulls the debian:latest image:
 ```
-$ docker pull debian
+docker pull debian
 ```  
-Docker images can consist of multiple layers. In the example above, the image consists of two layers. Layers can be reused by images.  
-For example, the debian:jessie image shares both layers with debian:latest. Pulling the debian:jessie image therefore only pulls its metadata, but not its layers:  
+Docker images can consist of multiple layers. In the example above, the image consists of two layers.  
+Layers can be reused by images. For example, the debian:jessie image shares both layers with debian:latest. Pulling the debian:jessie image therefore only pulls its metadata, but not its layers:  
 ```
 $ docker pull debian:jessie
 
@@ -45,15 +45,7 @@ a3ed95caeb02: Already exists
 Digest: ...
 Status: Downloaded newer image for debian:jessie
 ```
-To see which images are present locally, use the ```docker images``` command:  
-```
-$ docker images
-
-REPOSITORY   TAG      IMAGE ID        CREATED       SIZE
-debian       jessie   f50f9524513f    ...           ...
-debian       latest   f50f9524513f    ...           ...
-```
-In the example above, debian:jessie and debian:latest have the same image ID because they are actually the same image tagged with different names.   
+To see which images are present locally, use the ```docker images``` command. In the example above, debian:jessie and debian:latest have the **same image ID** because they are actually the same image tagged with different names.   
 
 ### Example: [Push a new image to a registry](https://docs.docker.com/engine/reference/commandline/push/#push-a-new-image-to-a-registry)
 First save the new image by finding the container ID (using docker container ls) and then committing it to a new image name.
