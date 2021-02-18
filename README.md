@@ -7,16 +7,16 @@ Youtube Tutorial: [Docker Tutorial for Beginners](https://www.youtube.com/watch?
 Images are just templates for docker containers.
 * [`docker build`](https://docs.docker.com/engine/reference/commandline/build) creates image from Dockerfile.
 * [`docker images`](https://docs.docker.com/engine/reference/commandline/images) shows all images.
-* [`docker commit`](https://docs.docker.com/engine/reference/commandline/commit) creates image from a container, pausing it temporarily if it is running.
 * [`docker rmi`](https://docs.docker.com/engine/reference/commandline/rmi) removes an image.
+* [`docker commit`](https://docs.docker.com/engine/reference/commandline/commit) creates image from a container, pausing it temporarily if it is running.
 * [`docker tag`](https://docs.docker.com/engine/reference/commandline/tag) tags an image to a name (local or registry).
 
 ## Container
 Your basic isolated Docker process.  
-* [`docker create`](https://docs.docker.com/engine/reference/commandline/create) creates a container but does not start it.
 * [`docker run`](https://docs.docker.com/engine/reference/commandline/run) creates and starts a container in one operation.
 * [`docker ps`](https://docs.docker.com/engine/reference/commandline/ps) shows running containers, use `-a` to show all running and stopped containers.
 * [`docker rm`](https://docs.docker.com/engine/reference/commandline/rm) deletes a container.
+* [`docker create`](https://docs.docker.com/engine/reference/commandline/create) creates a container but does not start it.
 * [`docker start`](https://docs.docker.com/engine/reference/commandline/start) starts a container so it is running.
 * [`docker stop`](https://docs.docker.com/engine/reference/commandline/stop) stops a running container.
 
