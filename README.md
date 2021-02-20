@@ -33,16 +33,10 @@ The ```-p``` instructs Docker to map the host's port 4000 to the container's por
 The ```-d``` flag makes the container run in the background (not tied to the terminal's session).  
  
 * [`docker ps`](https://docs.docker.com/engine/reference/commandline/ps) shows running containers, use `-a` to show all running and stopped containers.
-* [`docker rm`](https://docs.docker.com/engine/reference/commandline/rm) deletes a container.
-```
-docker rm my-container
-```
+* [`docker rm`](https://docs.docker.com/engine/reference/commandline/rm) deletes a container.```docker rm my-container```
 * [`docker create`](https://docs.docker.com/engine/reference/commandline/create) creates a container but does not start it.
 * [`docker start`](https://docs.docker.com/engine/reference/commandline/start) starts a container so it is running.
-* [`docker stop`](https://docs.docker.com/engine/reference/commandline/stop) stops a running container.
-```
-docker stop my-container
-```
+* [`docker stop`](https://docs.docker.com/engine/reference/commandline/stop) stops a running container.```docker stop my-container```
 
 ## Registry
 A [Docker registry](https://docs.docker.com/get-started/overview/#docker-registries) stores Docker images. Docker Hub is a public registry that anyone can use, and Docker is configured to look for images on Docker Hub by default.   
