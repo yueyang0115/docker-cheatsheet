@@ -8,10 +8,13 @@ Qwiklab Walkthrough: [Introduction to Docker](https://www.qwiklabs.com/focuses/1
 Images are just templates for docker containers.
 * [`docker build`](https://docs.docker.com/engine/reference/commandline/build) creates image from Dockerfile.
 ```
+docker build .                  (random name, default tag)
+docker build node-app .         (default tag)
 docker build -t node-app:0.1 .
 ```
-The ```-t``` is to name and tag an image with the name:tag syntax. The name of the image is node-app and the tag is 0.1. If you don't specify a tag, the tag will default to latest.  
+The ```-t``` is to name and tag an image with the ```name:tag``` syntax. The ```name``` of the image is node-app and the ```tag``` is 0.1. If you don't specify a tag, the tag will default to ```latest```.  
 The ```.``` means current directory so you need to run this command from within the directory that has the Dockerfile.
+
 * [`docker images`](https://docs.docker.com/engine/reference/commandline/images) shows all images.
 * [`docker rmi`](https://docs.docker.com/engine/reference/commandline/rmi) removes an image.
 * [`docker commit`](https://docs.docker.com/engine/reference/commandline/commit) creates image from a container, pausing it temporarily if it is running.
@@ -20,6 +23,15 @@ The ```.``` means current directory so you need to run this command from within 
 ## Container
 Your basic isolated Docker process.  
 * [`docker run`](https://docs.docker.com/engine/reference/commandline/run) creates and starts a container in one operation.
+```
+docker run hello-world
+docker run hello-world --name my-container
+docker run -p 4000:80 --name my-app node-app:0.1
+```
+The ```--name``` flag allows you to name the container if you like. The container Names are also randomly generated but can be specified with ```docker run --name [container-name] hello-world```.  
+The ```-p``` instructs Docker to map the host's port 4000 to the container's port 80.  
+The ```-d``` flag makes the container run in the background (not tied to the terminal's session).  
+ 
 * [`docker ps`](https://docs.docker.com/engine/reference/commandline/ps) shows running containers, use `-a` to show all running and stopped containers.
 * [`docker rm`](https://docs.docker.com/engine/reference/commandline/rm) deletes a container.
 * [`docker create`](https://docs.docker.com/engine/reference/commandline/create) creates a container but does not start it.
