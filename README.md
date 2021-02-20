@@ -2,10 +2,16 @@
 
 Reference: https://github.com/wsargent/docker-cheat-sheet  
 Youtube Tutorial: [Docker Tutorial for Beginners](https://www.youtube.com/watch?v=fqMOX6JJhGo&list=RDCMUC8butISFwT-Wl7EV0hUK0BQ&start_radio=1&t=18)  
+Qwiklab Walkthrough: [Introduction to Docker](https://www.qwiklabs.com/focuses/1029?parent=catalog)
 
 ## Image
 Images are just templates for docker containers.
 * [`docker build`](https://docs.docker.com/engine/reference/commandline/build) creates image from Dockerfile.
+```
+docker build -t node-app:0.1 .
+```
+The ```-t``` is to name and tag an image with the name:tag syntax. The name of the image is node-app and the tag is 0.1. If you don't specify a tag, the tag will default to latest.  
+The ```.``` means current directory so you need to run this command from within the directory that has the Dockerfile.
 * [`docker images`](https://docs.docker.com/engine/reference/commandline/images) shows all images.
 * [`docker rmi`](https://docs.docker.com/engine/reference/commandline/rmi) removes an image.
 * [`docker commit`](https://docs.docker.com/engine/reference/commandline/commit) creates image from a container, pausing it temporarily if it is running.
