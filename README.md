@@ -26,7 +26,7 @@ Your basic isolated Docker process.
 ```
 docker run hello-world
 docker run hello-world --name my-container
-docker run -p 4000:80 --name my-app node-app:0.1
+docker run node-app:0.1 --name my-container -p 4000:80
 ```
 The ```--name``` flag allows you to name the container if you like. The container Names are also randomly generated but can be specified with ```docker run --name [container-name] hello-world```.  
 The ```-p``` instructs Docker to map the host's port 4000 to the container's port 80.  
@@ -34,9 +34,15 @@ The ```-d``` flag makes the container run in the background (not tied to the ter
  
 * [`docker ps`](https://docs.docker.com/engine/reference/commandline/ps) shows running containers, use `-a` to show all running and stopped containers.
 * [`docker rm`](https://docs.docker.com/engine/reference/commandline/rm) deletes a container.
+```
+docker rm my-container
+```
 * [`docker create`](https://docs.docker.com/engine/reference/commandline/create) creates a container but does not start it.
 * [`docker start`](https://docs.docker.com/engine/reference/commandline/start) starts a container so it is running.
 * [`docker stop`](https://docs.docker.com/engine/reference/commandline/stop) stops a running container.
+```
+docker stop my-container
+```
 
 ## Registry
 A [Docker registry](https://docs.docker.com/get-started/overview/#docker-registries) stores Docker images. Docker Hub is a public registry that anyone can use, and Docker is configured to look for images on Docker Hub by default.   
