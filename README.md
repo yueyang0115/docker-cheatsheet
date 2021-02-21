@@ -17,6 +17,11 @@ The ```.``` means current directory so you need to run this command from within 
 
 * [`docker images`](https://docs.docker.com/engine/reference/commandline/images) shows all images.
 * [`docker rmi`](https://docs.docker.com/engine/reference/commandline/rmi) removes an image.
+```
+docker rmi node-app:0.1             (use -f to force the deletion)
+docker rmi $(docker images -aq)     (remove remaining images)
+```
+Child images should be removed before parent images can be removed.
 * [`docker commit`](https://docs.docker.com/engine/reference/commandline/commit) creates image from a container, pausing it temporarily if it is running.
 * [`docker tag`](https://docs.docker.com/engine/reference/commandline/tag) tags an image to a name (local or registry).
 
@@ -27,6 +32,7 @@ Your basic isolated Docker process.
 docker run hello-world
 docker run --name my-container node-app:v0.1
 docker run -p 4000:80 node-app:0.1
+
 docker run -it node-app:0.1                     (if it's python program, will open a python shell)
 docker run -it node-app:0.1 bash                (run image, bash into the environment, can see all files)
 docker exec -it my-container bash               (create a new bash session in the container )
@@ -34,15 +40,24 @@ docker exec -it my-container bash               (create a new bash session in th
 The ```--name``` names the container. Otherwise it will randomly generate a container name.  
 The ```-p``` instructs Docker to map the host's port 4000 to the container's port 80.  
 The ```-d``` flag makes the container run in the background (not tied to the terminal's session).  
+
 The ```-it``` allocates a pseudo-TTY connected to the container’s stdin, creating an interactive bash shell in the container.  
 The ```docker exec -it [container_id] bash``` will create a new Bash session in the container.  
 Bash ran in the WORKDIR directory (/app) specified in the Dockerfile. 
 
 * [`docker ps`](https://docs.docker.com/engine/reference/commandline/ps) shows running containers, use `-a` to show all running and stopped containers.
-* [`docker rm`](https://docs.docker.com/engine/reference/commandline/rm) deletes a container.```docker rm my-container```
+* [`docker rm`](https://docs.docker.com/engine/reference/commandline/rm) deletes a container.
+```
+docker rm my-container               
+docker rm $(docker ps -aq)           (remove all containers)         
+```
 * [`docker create`](https://docs.docker.com/engine/reference/commandline/create) creates a container but does not start it.
 * [`docker start`](https://docs.docker.com/engine/reference/commandline/start) starts a container so it is running.
-* [`docker stop`](https://docs.docker.com/engine/reference/commandline/stop) stops a running container.```docker stop my-container```
+* [`docker stop`](https://docs.docker.com/engine/reference/commandline/stop) stops a running container.
+```
+docker stop my-container
+docker stop $(docker ps -q)          (stop all containers)
+```
 
 ## Registry
 A [Docker registry](https://docs.docker.com/get-started/overview/#docker-registries) stores Docker images. Docker Hub is a public registry that anyone can use, and Docker is configured to look for images on Docker Hub by default.   
