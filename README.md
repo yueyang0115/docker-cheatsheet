@@ -25,13 +25,21 @@ Your basic isolated Docker process.
 * [`docker run`](https://docs.docker.com/engine/reference/commandline/run) creates and starts a container in one operation.
 ```
 docker run hello-world
-docker run hello-world --name my-container
-docker run node-app:0.1 --name my-container -p 4000:80
+docker run --name my-container node-app:v0.1
+docker run -p 4000:80 node-app:0.1
+
+docker run -it node-app:0.1                     (if it's python program, will open a python shell)
+docker run -it node-app:0.1 bash                (run image, bash into the environment, can see all files)
+docker exec -it my-container bash               (create a new bash session in the container )
 ```
-The ```--name``` flag allows you to name the container if you like. The container Names are also randomly generated but can be specified with ```docker run --name [container-name] hello-world```.  
+The ```--name``` names the container. Otherwise it will randomly generate a container name.  
 The ```-p``` instructs Docker to map the host's port 4000 to the container's port 80.  
 The ```-d``` flag makes the container run in the background (not tied to the terminal's session).  
- 
+
+The ```-it``` allocates a pseudo-TTY connected to the container’s stdin, creating an interactive bash shell in the container.  
+The ```docker exec -it [container_id] bash``` will create a new Bash session in the container.  
+Bash ran in the WORKDIR directory (/app) specified in the Dockerfile. 
+
 * [`docker ps`](https://docs.docker.com/engine/reference/commandline/ps) shows running containers, use `-a` to show all running and stopped containers.
 * [`docker rm`](https://docs.docker.com/engine/reference/commandline/rm) deletes a container.```docker rm my-container```
 * [`docker create`](https://docs.docker.com/engine/reference/commandline/create) creates a container but does not start it.
