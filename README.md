@@ -103,4 +103,4 @@ docker run -p 4000:80 -d gcr.io/[project-id]/node-app:0.2
 ```
 
 ### Example: Push/Pull an image to/from Amazon Elastic Container Registry
-Click on the newly created repo, and click on "view push commands". It will show commands.  
+Open Amazon ECR console and create a repository. Click on "view push commands" to see the instruction.  
