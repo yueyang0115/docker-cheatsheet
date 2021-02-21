@@ -27,7 +27,6 @@ Your basic isolated Docker process.
 docker run hello-world
 docker run --name my-container node-app:v0.1
 docker run -p 4000:80 node-app:0.1
-
 docker run -it node-app:0.1                     (if it's python program, will open a python shell)
 docker run -it node-app:0.1 bash                (run image, bash into the environment, can see all files)
 docker exec -it my-container bash               (create a new bash session in the container )
@@ -35,7 +34,6 @@ docker exec -it my-container bash               (create a new bash session in th
 The ```--name``` names the container. Otherwise it will randomly generate a container name.  
 The ```-p``` instructs Docker to map the host's port 4000 to the container's port 80.  
 The ```-d``` flag makes the container run in the background (not tied to the terminal's session).  
-
 The ```-it``` allocates a pseudo-TTY connected to the container’s stdin, creating an interactive bash shell in the container.  
 The ```docker exec -it [container_id] bash``` will create a new Bash session in the container.  
 Bash ran in the WORKDIR directory (/app) specified in the Dockerfile. 
