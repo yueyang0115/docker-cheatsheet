@@ -104,7 +104,7 @@ docker pull yueyang0115/dukeproj:v1
 ```
 
 ### Example: [Push/Pull an image to/from Google Container Registry](https://www.qwiklabs.com/focuses/1029?parent=catalog#step8)
-To ***push images*** to your private registry hosted by gcr, you need to tag the images with a registry name. The format is ```[hostname]/[project-id]/[image]:[tag]```.  
+To ***push images***, tag the images with a registry name using format ```[hostname]/[project-id]/[image]:[tag]```.  
 You can find your project ID by running ```gcloud config list project```.  
 ```
 docker tag node-app:0.2 gcr.io/[project-id]/node-app:0.2
