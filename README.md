@@ -50,14 +50,15 @@ Bash ran in the WORKDIR directory (/app) specified in the Dockerfile.
 docker rm my-container               
 docker rm $(docker ps -aq)           (remove all containers)         
 ```
-* [`docker ps`](https://docs.docker.com/engine/reference/commandline/ps) shows running containers, use `-a` to show all running and stopped containers.
-* [`docker create`](https://docs.docker.com/engine/reference/commandline/create) creates a container but does not start it.
-* [`docker start`](https://docs.docker.com/engine/reference/commandline/start) starts a container so it is running.
 * [`docker stop`](https://docs.docker.com/engine/reference/commandline/stop) stops a running container.
 ```
 docker stop my-container
 docker stop $(docker ps -q)          (stop all containers)
 ```
+* [`docker ps`](https://docs.docker.com/engine/reference/commandline/ps) shows running containers, use `-a` to show all running and stopped containers.
+* [`docker create`](https://docs.docker.com/engine/reference/commandline/create) creates a container but does not start it.
+* [`docker start`](https://docs.docker.com/engine/reference/commandline/start) starts a container so it is running.
+
 
 ## Registry
 A [Docker registry](https://docs.docker.com/get-started/overview/#docker-registries) stores Docker images. Docker Hub is a public registry that anyone can use, and Docker is configured to look for images on Docker Hub by default.   
@@ -68,18 +69,13 @@ A [Docker registry](https://docs.docker.com/get-started/overview/#docker-registr
 * [`docker push`](https://docs.docker.com/engine/reference/commandline/push) pushes an image to the registry from local machine.
 
 ### Example: [Pull an image from Docker Hub](https://docs.docker.com/engine/reference/commandline/pull/#pull-an-image-from-docker-hub)
-This command pulls the debian:latest image:
+These commands pull the debian:latest and debian:jessie images from Docker Hub.  
 ```
 $ docker pull debian
-```  
-Docker images can consist of multiple layers and layers can be reused by images.  
-In the example above, the image consists of two layers. And the debian:jessie image shares both layers with debian:latest. Pulling the debian:jessie image therefore only pulls its metadata, but not its layers:  
-```
 $ docker pull debian:jessie
-```
-You will find ```jessie: Pulling from library/debian; fdd5d7827f33: Already exists; a3ed95caeb02: Already exists ```in stdout.  
-Use the ```docker images``` to see which images are present locally.  
-In the example above, debian:jessie and debian:latest have the **same image ID** because they are actually the same image tagged with different names.   
+```  
+debian:jessie image shares layers with debian:latest. Pulling debian:jessie only pulls its metadata, but not its layers.  
+Also they have the **same image ID** because they are the same image tagged with different names.  
 
 ### Example: [Push a new image to a registry](https://docs.docker.com/engine/reference/commandline/push/#push-a-new-image-to-a-registry)
 First save the new image by finding the container ID (using docker container ls) and then committing it to a new image name.
@@ -91,8 +87,7 @@ Now, push the image to the registry using the image ID. In this example the regi
 $ docker image tag rhel-httpd:latest registry-host:5000/myadmin/rhel-httpd:latest
 $ docker image push registry-host:5000/myadmin/rhel-httpd:latest
 ```
-Check that this worked by running:  
-```
-$ docker image ls
-```
-You should see both rhel-httpd and registry-host:5000/myadmin/rhel-httpd listed.  
+Running ```docker image ls```, you should see both rhel-httpd and registry-host:5000/myadmin/rhel-httpd listed. 
+
+### Example: [Push an image to Google Container Registry](https://www.qwiklabs.com/focuses/1029?parent=catalog)
+
