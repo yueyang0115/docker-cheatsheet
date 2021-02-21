@@ -89,5 +89,18 @@ $ docker image push registry-host:5000/myadmin/rhel-httpd:latest
 ```
 Running ```docker image ls```, you should see both rhel-httpd and registry-host:5000/myadmin/rhel-httpd listed. 
 
-### Example: [Push an image to Google Container Registry](https://www.qwiklabs.com/focuses/1029?parent=catalog)
+### Example: [Push/Pull an image to/from Google Container Registry](https://www.qwiklabs.com/focuses/1029?parent=catalog)
+To push images to your private registry hosted by gcr, you need to tag the images with a registry name. The format is ```[hostname]/[project-id]/[image]:[tag]```.  
+You can find your project ID by running ```gcloud config list project```.  
+```
+docker tag node-app:0.2 gcr.io/[project-id]/node-app:0.2
+docker push gcr.io/[project-id]/node-app:0.2
+```
+To pull an image from gcr and run it
+```
+docker pull gcr.io/[project-id]/node-app:0.2
+docker run -p 4000:80 -d gcr.io/[project-id]/node-app:0.2
+```
 
+### Example: Push/Pull an image to/from Amazon Elastic Container Registry
+Click on the newly created repo, and click on "view push commands". It will show commands.  
