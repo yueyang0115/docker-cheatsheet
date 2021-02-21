@@ -87,7 +87,7 @@ Now, push the image to the registry using the image ID. In this example the regi
 $ docker image tag rhel-httpd:latest registry-host:5000/myadmin/rhel-httpd:latest
 $ docker image push registry-host:5000/myadmin/rhel-httpd:latest
 ```
-Running ```docker image ls```, you should see both rhel-httpd and registry-host:5000/myadmin/rhel-httpd listed. 
+Running ```docker images```, you should see both rhel-httpd and registry-host:5000/myadmin/rhel-httpd listed. 
 
 ### Example: [Push/Pull an image to/from Google Container Registry](https://www.qwiklabs.com/focuses/1029?parent=catalog#step8)
 To push images to your private registry hosted by gcr, you need to tag the images with a registry name. The format is ```[hostname]/[project-id]/[image]:[tag]```.  
