@@ -68,7 +68,7 @@ A [Docker registry](https://docs.docker.com/get-started/overview/#docker-registr
 * [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull) pulls an image from registry. If no tag is provided, Docker Engine uses the :latest tag as a default.
 * [`docker push`](https://docs.docker.com/engine/reference/commandline/push) pushes an image to the registry from local machine.
 
-### Example: [Pull an image from Docker Hub](https://docs.docker.com/engine/reference/commandline/pull/#pull-an-image-from-docker-hub)
+### Example: [Pull an official image](https://docs.docker.com/engine/reference/commandline/pull/#pull-an-image-from-docker-hub)
 These commands pull the debian:latest and debian:jessie images from Docker Hub.  
 ```
 $ docker pull debian
@@ -77,7 +77,7 @@ $ docker pull debian:jessie
 debian:jessie image shares layers with debian:latest. Pulling debian:jessie only pulls its metadata, but not its layers.  
 Also they have the **same image ID** because they are the same image tagged with different names.  
 
-### Example: [Push a new image to a registry](https://docs.docker.com/engine/reference/commandline/push/#push-a-new-image-to-a-registry)
+### Example: [Push an image to a registry](https://docs.docker.com/engine/reference/commandline/push/#push-a-new-image-to-a-registry)
 First save the new image by finding the container ID (using docker container ls) and then committing it to a new image name.
 ```
 $ docker container commit c16378f943fe rhel-httpd:latest
@@ -89,14 +89,28 @@ $ docker image push registry-host:5000/myadmin/rhel-httpd:latest
 ```
 Running ```docker images```, you should see both rhel-httpd and registry-host:5000/myadmin/rhel-httpd listed. 
 
+### Example: [Push/Pull to/from Docker Hub](https://github.com/yueyang0115/docker-deploy/blob/main/README.md#push-to-docker-hub)
+**Push to Docker Hub**  
+Create a new repository on DockerHub.  
+Login to DockerHub via ```docker login``` on your local computer.  
+Tag your image with hostname and tag-name. Push it to using format ```yueyang0115/[repo-name]:[tag-name]```.  
+```
+docker tag my-app:v1 yueyang0115/dukeproj:v1
+docker push yueyang0115/dukeproj:v1
+```
+**Pull from Docker Hub**  
+```
+docker pull yueyang0115/dukeproj:v1
+```
+
 ### Example: [Push/Pull an image to/from Google Container Registry](https://www.qwiklabs.com/focuses/1029?parent=catalog#step8)
-To push images to your private registry hosted by gcr, you need to tag the images with a registry name. The format is ```[hostname]/[project-id]/[image]:[tag]```.  
+To ***push images*** to your private registry hosted by gcr, you need to tag the images with a registry name. The format is ```[hostname]/[project-id]/[image]:[tag]```.  
 You can find your project ID by running ```gcloud config list project```.  
 ```
 docker tag node-app:0.2 gcr.io/[project-id]/node-app:0.2
 docker push gcr.io/[project-id]/node-app:0.2
 ```
-To pull an image from gcr and run it
+To ***pull an image*** from gcr and run it
 ```
 docker pull gcr.io/[project-id]/node-app:0.2
 docker run -p 4000:80 -d gcr.io/[project-id]/node-app:0.2
