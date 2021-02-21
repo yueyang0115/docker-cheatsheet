@@ -89,7 +89,7 @@ $ docker image push registry-host:5000/myadmin/rhel-httpd:latest
 ```
 Running ```docker image ls```, you should see both rhel-httpd and registry-host:5000/myadmin/rhel-httpd listed. 
 
-### Example: [Push/Pull an image to/from Google Container Registry](https://www.qwiklabs.com/focuses/1029?parent=catalog)
+### Example: [Push/Pull an image to/from Google Container Registry](https://www.qwiklabs.com/focuses/1029?parent=catalog#step8)
 To push images to your private registry hosted by gcr, you need to tag the images with a registry name. The format is ```[hostname]/[project-id]/[image]:[tag]```.  
 You can find your project ID by running ```gcloud config list project```.  
 ```
