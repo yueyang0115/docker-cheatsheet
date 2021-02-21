@@ -12,16 +12,16 @@ docker build .                  (random name, default tag)
 docker build node-app .         (default tag)
 docker build -t node-app:0.1 .
 ```
-The ```-t``` is to name and tag an image with the ```name:tag``` syntax. The ```name``` of the image is node-app and the ```tag``` is 0.1. If you don't specify a tag, the tag will default to ```latest```.  
+The ```-t``` is to name and tag an image with the ```name:tag``` syntax. The ```name``` of the image is node-app and the ```tag``` is 0.1. If you don't specify a tag, the tag will default to ```latest```. Same image tagged with different names have same image ID.  
 The ```.``` means current directory so you need to run this command from within the directory that has the Dockerfile.
 
-* [`docker images`](https://docs.docker.com/engine/reference/commandline/images) shows all images.
 * [`docker rmi`](https://docs.docker.com/engine/reference/commandline/rmi) removes an image.
 ```
 docker rmi node-app:0.1             (use -f to force the deletion)
 docker rmi $(docker images -aq)     (remove remaining images)
 ```
 Child images should be removed before parent images can be removed.
+* [`docker images`](https://docs.docker.com/engine/reference/commandline/images) shows all images.
 * [`docker commit`](https://docs.docker.com/engine/reference/commandline/commit) creates image from a container, pausing it temporarily if it is running.
 * [`docker tag`](https://docs.docker.com/engine/reference/commandline/tag) tags an image to a name (local or registry).
 
@@ -45,12 +45,12 @@ The ```-it``` allocates a pseudo-TTY connected to the container’s stdin, creat
 The ```docker exec -it [container_id] bash``` will create a new Bash session in the container.  
 Bash ran in the WORKDIR directory (/app) specified in the Dockerfile. 
 
-* [`docker ps`](https://docs.docker.com/engine/reference/commandline/ps) shows running containers, use `-a` to show all running and stopped containers.
 * [`docker rm`](https://docs.docker.com/engine/reference/commandline/rm) deletes a container.
 ```
 docker rm my-container               
 docker rm $(docker ps -aq)           (remove all containers)         
 ```
+* [`docker ps`](https://docs.docker.com/engine/reference/commandline/ps) shows running containers, use `-a` to show all running and stopped containers.
 * [`docker create`](https://docs.docker.com/engine/reference/commandline/create) creates a container but does not start it.
 * [`docker start`](https://docs.docker.com/engine/reference/commandline/start) starts a container so it is running.
 * [`docker stop`](https://docs.docker.com/engine/reference/commandline/stop) stops a running container.
